@@ -30,7 +30,7 @@ public class ConfigurationManager {
     }
 
     public String getBaseUrl() {
-        return properties.getProperty("base.ur");
+        return properties.getProperty("base.url");
     }
 
     public String getDatasetId() {
