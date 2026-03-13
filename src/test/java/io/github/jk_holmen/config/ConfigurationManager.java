@@ -29,11 +29,21 @@ public class ConfigurationManager {
         }
     }
 
-    public String getBaseUrl() {
-        return properties.getProperty("base.url");
+    private String get(String propertyLabel) {
+        String property = properties.getProperty(propertyLabel);
+
+        if (property == null) {
+            throw new IllegalArgumentException(
+                "No property configured for label: " + propertyLabel);
+        }
+        return property;
     }
 
-    public String getDatasetId() {
-        return properties.getProperty("dataset.id");
+    public String getBaseUrl() {
+        return get("base.url");
+    }
+
+    public String getDatasetId(String datasetName) {
+        return get("dataset.id." + datasetName);
     }
 }
