@@ -3,7 +3,7 @@ package io.github.jk_holmen.models;
 import java.util.List;
 
 public class TestpersonnummerResponse {
-    
+
     private int resultCount;
 
     private int offset;

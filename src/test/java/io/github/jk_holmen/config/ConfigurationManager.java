@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigurationManager {
+
     private static ConfigurationManager instance;
     private final Properties properties = new Properties();
 
@@ -21,8 +22,8 @@ public class ConfigurationManager {
     }
 
     private void loadProperties() {
-        try (InputStream input = getClass().getClassLoader()
-                .getResourceAsStream("config.properties")) {
+        try (InputStream input =
+                getClass().getClassLoader().getResourceAsStream("config.properties")) {
             properties.load(input);
         } catch (IOException e) {
             throw new RuntimeException("Failed to load config.properties", e);
@@ -34,7 +35,7 @@ public class ConfigurationManager {
 
         if (property == null) {
             throw new IllegalArgumentException(
-                "No property configured for label: " + propertyLabel);
+                    "No property configured for label: " + propertyLabel);
         }
         return property;
     }

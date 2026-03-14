@@ -5,7 +5,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
-
 import io.github.jk_holmen.config.ConfigurationManager;
 
 public class BaseClient {
@@ -18,15 +17,10 @@ public class BaseClient {
         BASE_URL = ConfigurationManager.getInstance().getBaseUrl();
     }
 
-    public ApiResponse get(String path)
-            throws IOException, InterruptedException {
+    public ApiResponse get(String path) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(BASE_URL + path)).build();
 
-        HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(BASE_URL + path))
-            .build();
-        
         ApiResponse response = new ApiResponse(client.send(request, BodyHandlers.ofString()));
-
         return response;
     }
 }

@@ -1,12 +1,11 @@
 package io.github.jk_holmen.clients;
 
+import com.google.gson.Gson;
 import java.net.http.HttpHeaders;
 import java.net.http.HttpResponse;
 
-import com.google.gson.Gson;
-
 public class ApiResponse {
-    
+
     private final HttpResponse<String> httpResponse;
     private static final Gson gson = new Gson();
 
