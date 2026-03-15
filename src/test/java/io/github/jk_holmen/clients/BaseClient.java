@@ -24,6 +24,7 @@ public class BaseClient {
     protected final String BASE_URL;
 
     private final Long CONNECTION_TIMEOUT = ConfigurationManager.getInstance().getConnectionTimeout();
+    private final Long RESPONSE_TIMEOUT = ConfigurationManager.getInstance().getResponseTimeout();
 
     /**
      * Creates a client with a default {@link HttpClient} and the base URL
@@ -48,7 +49,8 @@ public class BaseClient {
      * @throws InterruptedException
      */
     public ApiResponse get(String path) throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(BASE_URL + path)).build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(BASE_URL + path))
+                .timeout(Duration.ofSeconds(RESPONSE_TIMEOUT)).build();
 
         ApiResponse response = new ApiResponse(client.send(request, BodyHandlers.ofString()));
         return response;
