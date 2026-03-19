@@ -104,7 +104,7 @@ public class ConfigurationManager {
 
     /**
      * Returns the response timeout to be used when making HTTP requests with
-     * {@link io.github.jk_holmen.clients.BaseClient#get(String).
+     * {@link io.github.jk_holmen.clients.BaseClient#get(String)}.
      * 
      * @return the response timeout in seconds
      */
